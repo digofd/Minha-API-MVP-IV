@@ -6,7 +6,7 @@ Além disso, opcionalmente, existe uma segunda coleta em outra API externa, mas 
 Cadastro da [AISWEB](https://aisweb.decea.mil.br/?i=publicacoes&p=api) (DECEA), faz a coleta dos dados necessários, de cada aeroporto individualmente e especificamente demandado na rota, para validação de condições especiais.
 
 > Este repositório contém a **API**. A interface (React) está em
-> **[MVP-IV-Front-end](https://github.com/digofd/MVP-IV-Front-end)**.
+> **[Minha-API-MVP-IV](https://github.com/digofd/Minha-API-MVP-IV)**.
 
 ![Arquitetura da aplicação](docs/arquitetura.png)
 
@@ -90,7 +90,7 @@ ler o relógio, a regra é verificada, não apenas documentada.
 Copie o modelo e preencha os valores:
 
 ```bash
-git clone https://github.com/digofd/MVP-IV-Back-end.git
+git clone https://github.com/digofd/Minha-API-MVP-IV.git
 cd MVP-IV-Back-end
 cp .env.example .env
 ```
