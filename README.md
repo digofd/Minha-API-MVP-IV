@@ -91,7 +91,7 @@ Copie o modelo e preencha os valores:
 
 ```bash
 git clone https://github.com/digofd/Minha-API-MVP-IV.git
-cd MVP-IV-Back-end
+cd Minha-API-MVP-IV
 cp .env.example .env
 ```
 
@@ -314,7 +314,7 @@ de qualquer escrita.
 ## Estrutura do repositório
 
 ```
-MVP-IV-Back-end/
+Minha-API-MVP-IV/
 ├── docs/
 │   └── arquitetura.svg / .png      fluxograma da arquitetura
 ├── Dockerfile
