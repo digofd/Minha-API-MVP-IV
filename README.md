@@ -32,7 +32,7 @@ Cada componente roda em seu próprio container, e cada um dos dois componentes i
 
 | Componente | Tecnologia | Porta no host | Repositório |
 |---|---|---|---|
-| **Interface** | React 18 + Vite, servida por nginx | `8020` | [MVP-IV-Front-end](https://github.com/digofd/MVP-IV-Front-end) |
+| **Interface** | React 18 + Vite, servida por nginx | `8020` | [Meu-Front-MVP-IV](https://github.com/digofd/Meu-Front-MVP-IV) |
 | **API** | FastAPI + SQLAlchemy assíncrono + APScheduler | `8010` | este |
 | **Banco operacional** | PostgreSQL 14 | `5433` | este |
 | **Banco de histórico** | PostgreSQL 14 — 15 dias de série | `5434` | este |
