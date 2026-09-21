@@ -6,7 +6,7 @@ Além disso, opcionalmente, existe uma segunda coleta em outra API externa, mas 
 Cadastro da [AISWEB](https://aisweb.decea.mil.br/?i=publicacoes&p=api) (DECEA), faz a coleta dos dados necessários, de cada aeroporto individualmente e especificamente demandado na rota, para validação de condições especiais.
 
 > Este repositório contém a **API**. A interface (React) está em
-> **[Minha-API-MVP-IV](https://github.com/digofd/Minha-API-MVP-IV)**.
+> **[Meu-Front-MVP-IV](https://github.com/digofd/Meu-Front-MVP-IV)**.
 
 ![Arquitetura da aplicação](docs/arquitetura.png)
 
@@ -136,7 +136,7 @@ docker compose up -d --build
 | API (status) | <http://localhost:8010/health> |
 
 Para ver a aplicação completa, suba em seguida a interface do repositório
-[MVP-IV-Front-end](https://github.com/digofd/MVP-IV-Front-end), que abre em <http://localhost:8020>.
+[Meu-Front-MVP-IV](https://github.com/digofd/Meu-Front-MVP-IV), que abre em <http://localhost:8020>.
 
 ### 3. Verificar
 
