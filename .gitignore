@@ -1,0 +1,22 @@
+# Segredos: as chaves da REDEMET e da AISWEB ficam só no .env local
+.env
+.env.*
+!.env.example
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editor e sistema
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/

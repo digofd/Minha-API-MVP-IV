@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="820" viewBox="0 0 1140 820" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <marker id="seta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155"/>
+    </marker>
+    <marker id="seta2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0ea5e9"/>
+    </marker>
+    <style>
+      .titulo { font-size: 21px; font-weight: 700; fill: #0f172a; }
+      .subtitulo { font-size: 13px; fill: #475569; }
+      .caixa-nome { font-size: 15px; font-weight: 700; fill: #0f172a; }
+      .caixa-det { font-size: 11.5px; fill: #475569; }
+      .rotulo { font-size: 11.5px; fill: #334155; }
+      .secao { font-size: 13px; font-weight: 700; fill: #0f172a; }
+      .nota { font-size: 11px; fill: #64748b; }
+      .mono { font-family: Consolas, monospace; font-size: 10.5px; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="1140" height="820" fill="#ffffff"/>
+
+  <text x="40" y="44" class="titulo">SkyRoute — Arquitetura da aplicação</text>
+  <text x="40" y="66" class="subtitulo">Cenário 1.1: Interface → API → Banco, com a API consumindo duas APIs externas. Cada componente em seu próprio container Docker.</text>
+
+  <!-- ============ FAIXA DOCKER ============ -->
+  <rect x="36" y="92" width="800" height="250" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="6 4"/>
+  <text x="52" y="114" class="nota">docker compose — rede skyroute-weather-api_default</text>
+
+  <!-- Interface -->
+  <rect x="64" y="132" width="210" height="104" rx="10" fill="#fde8cf" stroke="#2496ed" stroke-width="2.5"/>
+  <text x="169" y="162" text-anchor="middle" class="caixa-nome">Interface (Front-End)</text>
+  <text x="169" y="182" text-anchor="middle" class="caixa-det">React 18 + Vite</text>
+  <text x="169" y="199" text-anchor="middle" class="caixa-det">servida por nginx</text>
+  <text x="169" y="220" text-anchor="middle" class="mono">localhost:8020</text>
+
+  <!-- API -->
+  <rect x="392" y="132" width="210" height="104" rx="10" fill="#fde8cf" stroke="#2496ed" stroke-width="2.5"/>
+  <text x="497" y="162" text-anchor="middle" class="caixa-nome">API (Back-End)</text>
+  <text x="497" y="182" text-anchor="middle" class="caixa-det">FastAPI + SQLAlchemy</text>
+  <text x="497" y="199" text-anchor="middle" class="caixa-det">coleta horária + histórico 15 dias</text>
+  <text x="497" y="220" text-anchor="middle" class="mono">localhost:8010</text>
+
+  <!-- Banco operacional -->
+  <g transform="translate(680,126)">
+    <ellipse cx="58" cy="12" rx="52" ry="12" fill="#fde8cf" stroke="#2496ed" stroke-width="2.5"/>
+    <path d="M6 12 v42 a52 12 0 0 0 104 0 v-42" fill="#fde8cf" stroke="#2496ed" stroke-width="2.5"/>
+    <ellipse cx="58" cy="54" rx="52" ry="12" fill="none" stroke="#2496ed" stroke-width="2.5"/>
+    <text x="58" y="40" text-anchor="middle" class="caixa-det" font-weight="700">Operacional</text>
+    <text x="58" y="80" text-anchor="middle" class="mono">localhost:5433</text>
+  </g>
+
+  <!-- Banco de histórico -->
+  <g transform="translate(680,232)">
+    <ellipse cx="58" cy="12" rx="52" ry="12" fill="#fde8cf" stroke="#2496ed" stroke-width="2.5"/>
+    <path d="M6 12 v42 a52 12 0 0 0 104 0 v-42" fill="#fde8cf" stroke="#2496ed" stroke-width="2.5"/>
+    <ellipse cx="58" cy="54" rx="52" ry="12" fill="none" stroke="#2496ed" stroke-width="2.5"/>
+    <text x="58" y="40" text-anchor="middle" class="caixa-det" font-weight="700">Histórico</text>
+    <text x="58" y="80" text-anchor="middle" class="mono">localhost:5434</text>
+    <text x="58" y="94" text-anchor="middle" class="nota">15 dias de METAR</text>
+  </g>
+
+  <!-- setas -->
+  <line x1="274" y1="184" x2="388" y2="184" stroke="#334155" stroke-width="2" marker-end="url(#seta)" marker-start="url(#seta)"/>
+  <text x="331" y="172" text-anchor="middle" class="rotulo">REST / JSON</text>
+  <text x="331" y="200" text-anchor="middle" class="mono">GET POST PUT DELETE</text>
+
+  <line x1="602" y1="170" x2="676" y2="158" stroke="#334155" stroke-width="2" marker-end="url(#seta)" marker-start="url(#seta)"/>
+  <line x1="602" y1="212" x2="676" y2="262" stroke="#334155" stroke-width="2" marker-end="url(#seta)" marker-start="url(#seta)"/>
+  <text x="645" y="152" text-anchor="middle" class="rotulo">SQL</text>
+  <text x="627" y="252" text-anchor="middle" class="rotulo">SQL</text>
+
+  <!-- APIs externas — mantidas à esquerda da coluna dos bancos (x >= 686), senão
+       colidem com os rótulos do cilindro "Histórico". -->
+  <rect x="308" y="288" width="180" height="88" rx="10" fill="#cfe2fb" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="398" y="314" text-anchor="middle" class="caixa-nome">REDEMET</text>
+  <text x="398" y="333" text-anchor="middle" class="caixa-det">API externa · METAR e TAF</text>
+  <text x="398" y="351" text-anchor="middle" class="caixa-det">DECEA</text>
+  <text x="398" y="367" text-anchor="middle" class="mono">api-redemet.decea.mil.br</text>
+
+  <rect x="498" y="288" width="176" height="88" rx="10" fill="#cfe2fb" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="586" y="314" text-anchor="middle" class="caixa-nome">AISWEB</text>
+  <text x="586" y="333" text-anchor="middle" class="caixa-det">API externa · sol e aeródromo</text>
+  <text x="586" y="351" text-anchor="middle" class="caixa-det">DECEA · para o VFR Especial</text>
+  <text x="586" y="367" text-anchor="middle" class="mono">api.decea.mil.br/aisweb</text>
+
+  <line x1="440" y1="236" x2="410" y2="284" stroke="#334155" stroke-width="2" marker-end="url(#seta)" marker-start="url(#seta)"/>
+  <line x1="530" y1="236" x2="560" y2="284" stroke="#334155" stroke-width="2" marker-end="url(#seta)" marker-start="url(#seta)"/>
+
+  <!-- legenda -->
+  <rect x="864" y="92" width="240" height="176" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="880" y="116" class="secao">Legenda</text>
+  <line x1="880" y1="136" x2="920" y2="136" stroke="#334155" stroke-width="2" marker-end="url(#seta)"/>
+  <text x="930" y="140" class="nota">comunicação obrigatória</text>
+  <rect x="880" y="156" width="26" height="16" rx="3" fill="#fde8cf" stroke="#2496ed" stroke-width="2"/>
+  <text x="930" y="169" class="nota">módulo implementado</text>
+  <rect x="880" y="184" width="26" height="16" rx="3" fill="#cfe2fb" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="930" y="197" class="nota">módulo externo consumido</text>
+  <rect x="880" y="212" width="26" height="16" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="4 3"/>
+  <text x="930" y="225" class="nota">fronteira do Docker</text>
+  <rect x="880" y="240" width="26" height="16" rx="3" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="930" y="253" class="nota">núcleo puro (sem IO)</text>
+
+  <!-- ============ INTERIOR DA API ============ -->
+  <text x="40" y="404" class="titulo" font-size="17">Dentro da API — Functional Core, Imperative Shell</text>
+  <text x="40" y="426" class="subtitulo">O núcleo decide; a casca faz IO. Toda decisão de negócio está em funções puras, testáveis sem banco e sem rede.</text>
+
+  <rect x="36" y="446" width="1068" height="250" rx="14" fill="#fafafa" stroke="#e2e8f0"/>
+
+  <!-- casca entrada -->
+  <rect x="64" y="486" width="196" height="170" rx="10" fill="#fde8cf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="162" y="512" text-anchor="middle" class="caixa-nome">Casca — entrada</text>
+  <text x="162" y="536" text-anchor="middle" class="caixa-det">routes/routes.py</text>
+  <text x="162" y="554" text-anchor="middle" class="caixa-det">clients/ (REDEMET, AISWEB)</text>
+  <text x="162" y="572" text-anchor="middle" class="caixa-det">jobs/hourly_collector.py</text>
+  <text x="162" y="590" text-anchor="middle" class="caixa-det">aisweb_cache.py</text>
+  <line x1="86" y1="602" x2="238" y2="602" stroke="#fbbf24"/>
+  <text x="162" y="620" text-anchor="middle" class="nota">lê HTTP, banco, relógio,</text>
+  <text x="162" y="637" text-anchor="middle" class="nota">REDEMET e AISWEB</text>
+
+  <!-- núcleo -->
+  <rect x="330" y="466" width="480" height="210" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5"/>
+  <text x="570" y="492" text-anchor="middle" class="caixa-nome">Núcleo puro — app/core/</text>
+  <rect x="352" y="508" width="212" height="70" rx="8" fill="#ffffff" stroke="#86efac"/>
+  <text x="458" y="530" text-anchor="middle" class="caixa-det" font-weight="700">vfr_classifier.py</text>
+  <text x="458" y="548" text-anchor="middle" class="nota">classifica VFR pela ICA 100-12</text>
+  <text x="458" y="565" text-anchor="middle" class="nota">mínimos (Art.104) + Especial (Art.134)</text>
+  <rect x="576" y="508" width="212" height="70" rx="8" fill="#ffffff" stroke="#86efac"/>
+  <text x="682" y="530" text-anchor="middle" class="caixa-det" font-weight="700">observacoes.py</text>
+  <text x="682" y="548" text-anchor="middle" class="nota">decide o que gravar e</text>
+  <text x="682" y="565" text-anchor="middle" class="nota">o que ignorar, com motivo</text>
+  <rect x="352" y="590" width="212" height="66" rx="8" fill="#ffffff" stroke="#86efac"/>
+  <text x="458" y="612" text-anchor="middle" class="caixa-det" font-weight="700">coleta.py · consulta.py</text>
+  <text x="458" y="630" text-anchor="middle" class="nota">planeja a coleta e valida</text>
+  <text x="458" y="647" text-anchor="middle" class="nota">filtro, ordem e paginação</text>
+  <rect x="576" y="590" width="212" height="66" rx="8" fill="#ffffff" stroke="#86efac"/>
+  <text x="682" y="612" text-anchor="middle" class="caixa-det" font-weight="700">resumo.py · tendencia.py · sol.py</text>
+  <text x="682" y="630" text-anchor="middle" class="nota">agrega o painel, a série de 15</text>
+  <text x="682" y="647" text-anchor="middle" class="nota">dias e se um instante é diurno</text>
+
+  <!-- casca saída -->
+  <rect x="880" y="486" width="196" height="170" rx="10" fill="#fde8cf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="978" y="512" text-anchor="middle" class="caixa-nome">Casca — saída</text>
+  <text x="978" y="536" text-anchor="middle" class="caixa-det">models/ (SQLAlchemy)</text>
+  <text x="978" y="554" text-anchor="middle" class="caixa-det">schemas/ (Pydantic)</text>
+  <text x="978" y="572" text-anchor="middle" class="caixa-det">logging estruturado</text>
+  <line x1="902" y1="588" x2="1054" y2="588" stroke="#fbbf24"/>
+  <text x="978" y="608" text-anchor="middle" class="nota">grava, serializa</text>
+  <text x="978" y="626" text-anchor="middle" class="nota">e responde</text>
+
+  <line x1="260" y1="571" x2="326" y2="571" stroke="#0ea5e9" stroke-width="2.5" marker-end="url(#seta2)"/>
+  <text x="293" y="560" text-anchor="middle" class="rotulo" font-size="10.5">dados</text>
+  <line x1="810" y1="571" x2="876" y2="571" stroke="#0ea5e9" stroke-width="2.5" marker-end="url(#seta2)"/>
+  <text x="843" y="560" text-anchor="middle" class="rotulo" font-size="10.5">decisão</text>
+
+  <text x="570" y="700" text-anchor="middle" class="nota" font-style="italic">impuro → puro → impuro · o núcleo nunca chama a casca</text>
+
+  <!-- rodapé -->
+  <text x="40" y="746" class="secao">Fluxo de uma coleta</text>
+  <text x="40" y="768" class="nota">1. Agendador dispara a cada hora  →  2. Casca lê rotas ativas no banco  →  3. Casca busca METAR/TAF na REDEMET e sol/torre na AISWEB  →  4. Núcleo puro decide o que gravar</text>
+  <text x="40" y="786" class="nota">5. Casca persiste as observações e registra a coleta  →  6. Interface consulta a API e desenha o painel</text>
+  <text x="40" y="806" class="mono">Fonte da regra: ICA 100-12, Art. 104 (mínimos VMC) e Art. 134 (VFR Especial) · Dados: REDEMET e AISWEB / DECEA</text>
+</svg>
